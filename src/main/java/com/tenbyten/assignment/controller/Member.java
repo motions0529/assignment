@@ -1,5 +1,7 @@
 package com.tenbyten.assignment.controller;
 
+import com.tenbyten.assignment.dto.MemberFindIdRequestDto;
+import com.tenbyten.assignment.dto.MemberFindIdResponseDto;
 import com.tenbyten.assignment.dto.MemberSaveRequestDto;
 import com.tenbyten.assignment.dto.MemberSaveResponseDto;
 import com.tenbyten.assignment.repository.MemberRepository;
@@ -7,9 +9,7 @@ import com.tenbyten.assignment.service.MemberService;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -17,13 +17,13 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class Member {
 
-    private MemberService userService;
+    private MemberService memberService;
     private MemberRepository memberRepository;
 
     @ApiOperation(value = "회원가입" , response = MemberSaveResponseDto.class)
     @PostMapping("/signup")
-    public ResponseEntity<?> saveUsers(@RequestBody @Valid MemberSaveRequestDto dto) {
-        return ResponseEntity.ok(userService.save(dto));
+    public ResponseEntity<?> saveMembers(@RequestBody @Valid MemberSaveRequestDto dto) {
+        return ResponseEntity.ok(memberService.save(dto));
     }
 
 //    @ApiOperation(value = "로그인")
@@ -31,4 +31,10 @@ public class Member {
 //    public ResponseEntity<?> login(@RequestBody UserLoginRequestDto dto) {
 //        return userService.login(dto);
 //    }
+
+    @ApiOperation(value = "단일 회원 상세 정보 조회" , response = MemberFindIdResponseDto.class)
+    @GetMapping
+    public ResponseEntity<?> findByMemberId(@RequestParam MemberFindIdRequestDto dto) {
+        return ResponseEntity.ok(memberService.findByMemberId(dto));
+    }
 }
