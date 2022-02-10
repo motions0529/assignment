@@ -4,9 +4,7 @@ import com.tenbyten.assignment.dto.MemberSaveRequestDto;
 import com.tenbyten.assignment.dto.MemberSaveResponseDto;
 import com.tenbyten.assignment.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.var;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 
 @RequiredArgsConstructor
@@ -17,7 +15,6 @@ public class MemberService {
     @Transactional
     public MemberSaveResponseDto save(MemberSaveRequestDto dto) {
         memberRepository.save(dto.toEntity());
-
         MemberSaveResponseDto response = new MemberSaveResponseDto();
         response.setMessage("회원 가입 완료");
 

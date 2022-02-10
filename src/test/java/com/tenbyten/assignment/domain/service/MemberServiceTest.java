@@ -36,7 +36,7 @@ public class MemberServiceTest {
                 .email("motions@naver.com")
                 .gender("male")
                 .password("12345678910")
-                .phone("01000000000")
+                .phone("010-0000-0000")
                 .build();
 
         //when
