@@ -45,6 +45,6 @@ public class UsersRepositoryTest {
         //then
         Users users = usersList.get(0);
         assertThat(users.getName(), is("이종화"));
-        assertThat(users.getNickname(), is("민우아빠"));
+        assertThat(users.getNickname(), is("민우아빠1"));
     }
 }
