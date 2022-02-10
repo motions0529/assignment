@@ -14,7 +14,8 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
-public class Orders {
+@Table(name = "orders")
+public class Order {
     @Id
     @Column(length = 12, nullable = false)
     @ApiModelProperty(value ="주문번호")
@@ -28,7 +29,7 @@ public class Orders {
     private Date paymentdate;
 
     @Builder
-    public Orders(String orderserial , String productname , Date paymentdate) {
+    public Order(String orderserial , String productname , Date paymentdate) {
         this.orderserial = orderserial;
         this.productname = productname;
         this.paymentdate = paymentdate;
