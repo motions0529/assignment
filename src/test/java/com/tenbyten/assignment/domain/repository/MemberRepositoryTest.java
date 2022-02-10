@@ -1,7 +1,7 @@
 package com.tenbyten.assignment.domain.repository;
 
-import com.tenbyten.assignment.domain.Users;
-import com.tenbyten.assignment.repository.UsersRepository;
+import com.tenbyten.assignment.domain.Member;
+import com.tenbyten.assignment.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,33 +18,33 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class UsersRepositoryTest {
+public class MemberRepositoryTest {
 
     @Autowired
-    UsersRepository usersRepository;
+    MemberRepository memberRepository;
 
     @AfterEach
     public void cleanUp() {
-        usersRepository.deleteAll();
+        memberRepository.deleteAll();
     }
 
     @Test
     public void userSave_Load() {
         //given
-        usersRepository.save(Users.builder()
+        memberRepository.save(Member.builder()
                         .name("이종화")
                         .nickname("민우아빠")
                         .email("motions@naver.com")
                         .gender("male")
                         .password("12345678910")
-                        .phone("010-0000-0000")
+                        .phone("01000000000")
                         .build());
         //when
-        List<Users> usersList = usersRepository.findAll();
+        List<Member> usersList = memberRepository.findAll();
 
         //then
-        Users users = usersList.get(0);
+        Member users = usersList.get(0);
         assertThat(users.getName(), is("이종화"));
-        assertThat(users.getNickname(), is("민우아빠1"));
+        assertThat(users.getNickname(), is("민우아빠"));
     }
 }

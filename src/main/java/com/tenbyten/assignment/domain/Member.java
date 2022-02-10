@@ -11,7 +11,8 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
-public class Users {
+@Table(name = "members")
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value ="id (자동증가)")
@@ -35,7 +36,7 @@ public class Users {
     private String gender;
 
     @Builder
-    public Users(String name , String nickname , String password , String phone , String email , String gender) {
+    public Member(String name , String nickname , String password , String phone , String email , String gender) {
         this.name = name;
         this.nickname = nickname;
         this.password = password;
