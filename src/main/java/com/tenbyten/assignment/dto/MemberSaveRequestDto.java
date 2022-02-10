@@ -18,6 +18,7 @@ public class MemberSaveRequestDto {
 
     @NotBlank(message = "이름은 필수 입력 값입니다.")
     @Size(max = 20 , message = "20자를 초과 할 수 없습니다.")
+    @Pattern(regexp = "(.*[a-zA-Zㄱ-ㅎ가-힣])" , message = "한글, 영문 대소문자만 허용 합니다.")
     private String name;
 
     @NotBlank(message = "별명은 필수 입력 값입니다.")
@@ -27,7 +28,7 @@ public class MemberSaveRequestDto {
 
     @NotBlank(message = "비밀번호는 필수 입력 값입니다.")
     @Size(min = 10 , message = "비밀번호는 10자 이상이어야 합니다.")
-    @Pattern(regexp="(?=.*[0-9])(?=.*[A-Za-z])(?=.*\\\\W)(?=\\\\S+$)",
+    @Pattern(regexp="^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{10,20}$",
             message = "비밀번호는 영문 대문자/영문 소문자/특수 문자/숫자 각1개 이상씩 포함 되어야 합니다.")
     private String password;
 
