@@ -1,0 +1,4 @@
+INSERT INTO members (EMAIL , GENDER , NAME , NICKNAME , PASSWORD , PHONE) VALUES ('test1@naver.com','male','이종화1','sudburning1','tt02204365??','01066974365')
+INSERT INTO members (EMAIL , GENDER , NAME , NICKNAME , PASSWORD , PHONE) VALUES ('test2@naver.com','male','이종화2','sudburning2','tt02204365??','01066974365')
+INSERT INTO members (EMAIL , GENDER , NAME , NICKNAME , PASSWORD , PHONE) VALUES ('test3@naver.com','male','이종화3','sudburning3','tt02204365??','01066974365')
+INSERT INTO members (EMAIL , GENDER , NAME , NICKNAME , PASSWORD , PHONE) VALUES ('test4@naver.com','male','이종화4','sudburning4','tt02204365??','01066974365')

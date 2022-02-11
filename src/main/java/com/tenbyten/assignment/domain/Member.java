@@ -36,7 +36,8 @@ public class Member {
     private String gender;
 
     @Builder
-    public Member(String name , String nickname , String password , String phone , String email , String gender) {
+    public Member(Long id , String name , String nickname , String password , String phone , String email , String gender) {
+        this.id = id;
         this.name = name;
         this.nickname = nickname;
         this.password = password;
