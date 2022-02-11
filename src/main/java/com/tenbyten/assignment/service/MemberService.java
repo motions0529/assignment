@@ -19,21 +19,17 @@ public class MemberService {
     @Transactional
     public MemberSaveResponseDto save(MemberSaveRequestDto dto) {
         memberRepository.save(dto.toEntity());
-        MemberSaveResponseDto responseMessage = new MemberSaveResponseDto();
-        responseMessage.setMessage("회원 가입 완료");
+        MemberSaveResponseDto response = new MemberSaveResponseDto();
+        response.setMessage("회원 가입 완료");
 
-        return responseMessage;
+        return response;
     }
 
-    public MemberFindByIdResponseDto findById(MemberFindByIdRequestDto dto) {
-        Optional<Member> responseMember = memberRepository.findById(dto.getId());
-
-        if(!responseMember.isPresent()) {
-            throw new IllegalArgumentException();
-        }
-
-        return new MemberFindByIdResponseDto(responseMember.get());
-    }
+//    public MemberFindIdResponseDto findByMemberId(MemberFindIdRequestDto dto) {
+//        MemberFindIdResponseDto response = memberRepository.findByMemberId(dto.getId());
+//
+//        return response;
+//    }
 
 //    public ResponseEntity<?> login(UserLoginRequestDto dto) {
 //        return userRepository.findByUserEmail(dto.getEmail());
