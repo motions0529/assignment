@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
-@Table(name = "order")
+@Table(name = "orders")
 public class Order {
     @Id
     @Column(length = 12, nullable = false)
@@ -32,12 +32,12 @@ public class Order {
     @ApiModelProperty(value ="제품이름")
     private String productname;
 
-    @Column(name = "DATE_FIELD", nullable = false)
+    @Column(nullable = false)
     @ApiModelProperty(value ="결제일시")
     private LocalDateTime paymentdate;
 
     @Builder
-    public Order(String orderserial , String productname , LocalDateTime paymentdate , Long memberid) {
+    public Order(String orderserial , Long memberid ,  String productname , LocalDateTime paymentdate) {
         this.orderserial = orderserial;
         this.productname = productname;
         this.paymentdate = paymentdate;

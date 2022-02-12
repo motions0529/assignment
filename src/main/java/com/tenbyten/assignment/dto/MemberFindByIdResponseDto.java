@@ -1,12 +1,7 @@
 package com.tenbyten.assignment.dto;
 
 import com.tenbyten.assignment.domain.Member;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.Optional;
 
 @Getter
 public class MemberFindByIdResponseDto {

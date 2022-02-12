@@ -1,8 +1,12 @@
 package com.tenbyten.assignment.repository;
 
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.tenbyten.assignment.domain.Order;
 import com.tenbyten.assignment.domain.QOrder;
+import com.tenbyten.assignment.dto.OrderFindAllRequestDto;
+import com.tenbyten.assignment.dto.OrderFindByIdRequestDto;
+import com.tenbyten.assignment.dto.OrderFindByIdResponseDto;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
@@ -17,9 +21,28 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
     }
 
     @Override
-    public List<Order> getOrderList() {
+    public List<OrderFindByIdResponseDto> getOrderList(OrderFindAllRequestDto dto) {
         return queryFactory
-                .selectFrom(order)
+                .select(Projections.constructor(OrderFindByIdResponseDto.class,
+                        order.orderserial,
+                        order.memberid,
+                        order.productname,
+                        order.paymentdate))
+                .from(order)
+                .fetch();
+    }
+
+    @Override
+    public List<OrderFindByIdResponseDto> getOrderFindById(OrderFindByIdRequestDto dto) {
+
+        return queryFactory
+                .select(Projections.constructor(OrderFindByIdResponseDto.class,
+                        order.orderserial,
+                        order.memberid,
+                        order.productname,
+                        order.paymentdate))
+                .from(order)
+                .where(order.memberid.eq(dto.getMemberid()))
                 .fetch();
     }
 }
