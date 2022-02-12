@@ -34,8 +34,4 @@ public class MemberService {
 
         return new MemberFindByIdResponseDto(responseMember.get());
     }
-
-//    public ResponseEntity<?> login(UserLoginRequestDto dto) {
-//        return userRepository.findByUserEmail(dto.getEmail());
-//    }
 }

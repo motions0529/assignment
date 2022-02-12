@@ -5,6 +5,8 @@ import com.tenbyten.assignment.dto.OrderFindByIdRequestDto;
 import com.tenbyten.assignment.repository.OrderRepositoryImpl;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +27,7 @@ public class Order {
 
     @ApiOperation(value = "전체 주문 목록 조회")
     @GetMapping("/orders")
-    public ResponseEntity<?> getOrderList(@Valid OrderFindAllRequestDto dto) {
-        return ResponseEntity.ok(orderRepository.getOrderList(dto));
+    public ResponseEntity<?> getOrderList(@PageableDefault(size = 15) OrderFindAllRequestDto dto , Pageable pageable) {
+        return ResponseEntity.ok(orderRepository.getOrderList(dto , pageable));
     }
 }
