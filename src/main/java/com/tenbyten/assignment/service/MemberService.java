@@ -1,10 +1,7 @@
 package com.tenbyten.assignment.service;
 
 import com.tenbyten.assignment.domain.Member;
-import com.tenbyten.assignment.dto.MemberFindByIdRequestDto;
-import com.tenbyten.assignment.dto.MemberFindByIdResponseDto;
-import com.tenbyten.assignment.dto.MemberSaveRequestDto;
-import com.tenbyten.assignment.dto.MemberSaveResponseDto;
+import com.tenbyten.assignment.dto.*;
 import com.tenbyten.assignment.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -34,8 +31,4 @@ public class MemberService {
 
         return new MemberFindByIdResponseDto(responseMember.get());
     }
-
-//    public ResponseEntity<?> login(UserLoginRequestDto dto) {
-//        return userRepository.findByUserEmail(dto.getEmail());
-//    }
 }

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -28,7 +29,7 @@ public class MemberSaveRequestDto {
 
     @NotBlank(message = "비밀번호는 필수 입력 값입니다.")
     @Size(min = 10 , message = "비밀번호는 10자 이상이어야 합니다.")
-    @Pattern(regexp="^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{10,20}$",
+    @Pattern(regexp="^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{10,100}$",
             message = "비밀번호는 영문 대문자/영문 소문자/특수 문자/숫자 각1개 이상씩 포함 되어야 합니다.")
     private String password;
 
@@ -42,24 +43,28 @@ public class MemberSaveRequestDto {
 
     private String gender;
 
+    private String role;
+
     @Builder
-    public MemberSaveRequestDto(String name , String nickname , String password , String phone , String email , String gender) {
+    public MemberSaveRequestDto(String name , String nickname , String password , String phone , String email , String gender , String role) {
         this.name = name;
         this.nickname = nickname;
         this.password = password;
         this.phone = phone;
         this.email = email;
         this.gender = gender;
+        this.role = role;
     }
 
     public Member toEntity() {
         return Member.builder()
                 .name(name)
                 .nickname(nickname)
-                .password(password)
+                .password(new BCryptPasswordEncoder().encode(password))
                 .phone(phone)
                 .email(email)
                 .gender(gender)
+                .role(role)
                 .build();
     }
 

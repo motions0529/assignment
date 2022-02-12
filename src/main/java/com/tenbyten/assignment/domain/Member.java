@@ -26,7 +26,7 @@ public class Member {
     @ApiModelProperty(value ="별명")
     private String nickname;
 
-    @Column(length = 20, nullable = false)
+    @Column(nullable = false)
     @ApiModelProperty(value ="비밀번호")
     private String password;
 
@@ -41,8 +41,11 @@ public class Member {
     @ApiModelProperty(value ="성별")
     private String gender;
 
+    @ApiModelProperty(value ="인증관련")
+    private String role;
+
     @Builder
-    public Member(Long id , String name , String nickname , String password , String phone , String email , String gender) {
+    public Member(Long id , String name , String nickname , String password , String phone , String email , String gender , String role) {
         this.id = id;
         this.name = name;
         this.nickname = nickname;
@@ -50,5 +53,6 @@ public class Member {
         this.phone = phone;
         this.email = email;
         this.gender = gender;
+        this.role = role;
     }
 }
